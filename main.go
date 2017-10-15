@@ -37,7 +37,7 @@ func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/", getEmojis).Methods("GET")
 	router.HandleFunc("/guilds", getGuilds).Methods("GET")
-	port := "" //os.Getenv("PORT")
+	port := os.Getenv("PORT")
 	if port == "" {
 		port = "7070"
 	}
