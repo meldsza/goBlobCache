@@ -32,9 +32,9 @@ func getEmojis(w http.ResponseWriter, r *http.Request) {
 						_, test = em[emoji.Name+strconv.Itoa(a)]
 					}
 					a--
-					em[emoji.Name+strconv.Itoa(a)] = "https://cdn.discordapp.com/emojis/" + emoji.ID
+					em[emoji.Name+strconv.Itoa(a)] = "https://cdn.discordapp.com/emojis/" + emoji.ID + ".png"
 				} else {
-					em[emoji.Name] = "https://cdn.discordapp.com/emojis/" + emoji.ID
+					em[emoji.Name] = "https://cdn.discordapp.com/emojis/" + emoji.ID + ".png"
 				}
 			}
 		}
