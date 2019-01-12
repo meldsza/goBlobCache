@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Emoji List</title>
+    <style>
+        body {
+            padding-top: 65px;
+        }
+    </style>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">Emoji List</a>
+        </nav>
+        <div class="row">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Emoji Name</th>
+                        <th scope="col">Image</th>
+                    </tr>
+                </thead>
+                <tbody id="imageholder">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $.get("https://blob-cache.herokuapp.com/", function (data) {
+                let emotes = JSON.parse(data)
+                //console.log(emotes.length)
+                Object.keys(emotes).forEach(function (emoteName, index) {
+                    $("#imageholder").eq(0).append(
+                        `<tr>
+                            <th scope="row">${index}</th>
+                            <td>${emoteName}</td>
+                            <td><img style="max-width: 40px; max-height: 40px" src="${emotes[emoteName]}" alt="${emoteName}"></td>
+                        </tr>`
+                    )
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>
