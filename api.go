@@ -40,6 +40,7 @@ func getEmojis(w http.ResponseWriter, r *http.Request) {
 		}
 
 	}
+	enableCors(&w)
 	json.NewEncoder(w).Encode(em)
 }
 func getGuilds(w http.ResponseWriter, r *http.Request) {
@@ -54,4 +55,7 @@ func getGuilds(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	json.NewEncoder(w).Encode(gj)
+}
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
 }
